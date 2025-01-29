@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_order_service_car,access_order_service_car,model_order_service_car,,1,1,1,1
+access_order_service_car_damage,access_order_service_car_damage,model_order_service_car_damage,,1,1,1,1
+access_order_service_stage,access_order_service_stage,model_order_service_stage,,1,1,1,1
+access_auto,access_auto,model_auto,,1,1,1,1
+access_auto_inventory_item,access_auto_inventory_item,model_auto_inventory_item,,1,1,1,1
