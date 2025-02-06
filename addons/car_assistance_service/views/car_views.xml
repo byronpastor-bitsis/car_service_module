@@ -1,5 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 <data>
+
+<record id="action_auto" model="ir.actions.act_window">
+    <field name="name">Autos</field>
+    <field name="res_model">auto</field>
+    <field name="view_mode">tree,form,kanban</field>
+</record>
+
+<menuitem id="menu_auto_root" name="Autos" sequence="20"/>
+<menuitem id="menu_auto" name="Autos Registrados" parent="menu_auto_root" action="action_auto" sequence="10"/>
 
 <record id="view_auto_tree" model="ir.ui.view">
     <field name="name">auto.tree</field>
@@ -44,6 +54,7 @@
         </form>
     </field>
 </record>
+
 <record id="view_auto_kanban" model="ir.ui.view">
     <field name="name">auto.kanban</field>
     <field name="model">auto</field>
@@ -56,8 +67,8 @@
                 <t t-name="kanban-box">
                     <div class="oe_kanban_global_click">
                         <div class="oe_kanban_content">
-                            <strong><t t-esc="record.brand.value"/> <t t-esc="record.model.value"/></strong>
-                            <div>Placa: <t t-esc="record.plate.value"/></div>
+                            <strong><t t-esc="record.brand"/> <t t-esc="record.model"/></strong>
+                            <div>Placa: <t t-esc="record.plate"/></div>
                         </div>
                     </div>
                 </t>
@@ -66,14 +77,5 @@
     </field>
 </record>
 
-<record id="action_auto" model="ir.actions.act_window">
-    <field name="name">Autos</field>
-    <field name="res_model">auto</field>
-    <field name="view_mode">tree,form,kanban</field>
-</record>
-
-<menuitem id="menu_auto_root" name="Autos" sequence="20"/>
-<menuitem id="menu_auto" name="Autos Registrados" parent="menu_auto_root" action="action_auto" sequence="10"/>
 </data>
-
 </odoo>

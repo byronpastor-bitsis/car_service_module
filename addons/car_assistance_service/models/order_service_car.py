@@ -12,6 +12,12 @@ class OrderServiceCar(models.Model):
         required=True,
         tracking=True
     )
+    auto_id = fields.Many2one(
+        comodel_name='auto',
+        string='Auto',
+        required=True,
+        tracking=True
+    )
     job_title = fields.Char(
         string='Título del Trabajo',
         required=True,
@@ -99,20 +105,12 @@ class OrderServiceCar(models.Model):
                 order.team_id = order.user_id.sale_team_id
             else:
                 order.team_id = False
-                
-       # --- Campos Nuevos ---
-    auto_id = fields.Many2one(
-        comodel_name='auto',
-        string='Auto',
-        required=True,
-        tracking=True
-    )
     inventory_items_ids = fields.Many2many(
-        comodel_name='auto.inventory.item',
-        string='Ítems de Inventario',
-        compute='_compute_inventory_items',
-        readonly=False,
-        store=True
+    comodel_name='auto.inventory.item',
+    relation='order_service_car_inventory_rel',  # Nombre de la tabla intermedia
+    column1='order_id',  # Columna que referencia a order.service.car
+    column2='inventory_item_id',  # Columna que referencia a auto.inventory.item
+    string='Ítems de Inventario'
     )
 
     # --- Métodos ---
@@ -124,3 +122,10 @@ class OrderServiceCar(models.Model):
                 order.inventory_items_ids = order.auto_id.inventory_items_ids
             else:
                 order.inventory_items_ids = False
+    # En el modelo order.service.car
+    @api.onchange('auto_id')
+    def _onchange_auto_id(self):
+        if self.auto_id:
+            self.inventory_items_ids = self.auto_id.inventory_items_ids
+        else:
+            self.inventory_items_ids = False

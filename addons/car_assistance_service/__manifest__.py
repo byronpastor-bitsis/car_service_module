@@ -37,7 +37,8 @@
     "data": [
         "security/ir.model.access.csv",
         "views/order_service_car_views.xml",
-        "views/order_service_stages_views.xml"
+        "views/order_service_stages_views.xml",
+        "views/car_views.xml",
     ],
 
     # only loaded in demonstration mode

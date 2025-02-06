@@ -25,11 +25,11 @@
                         <div class="oe_kanban_global_click">
                             <div class="oe_kanban_content">
                                 <strong>
-                                    <t t-esc="record.job_title.value" />
+                                    <t t-esc="record.job_title" />
                                 </strong>
-                                <div>Cliente: <t t-esc="record.customer_id.display_name.value" /></div>
-                                <div t-if="record.check_in.value">Ingreso: <t
-                                        t-esc="record.check_in.value" /></div>
+                                <div>Cliente: <t t-esc="record.customer_id" /></div>
+                                <div t-if="record.check_in">Ingreso: <t
+                                        t-esc="record.check_in" /></div>
                             </div>
                             <div class="oe_kanban_footer">
                                 <field name="stage_id" widget="selection_badge" />
